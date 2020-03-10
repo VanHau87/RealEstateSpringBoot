@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -21,7 +21,7 @@ public abstract class BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	@Column
 	@CreatedBy
@@ -29,7 +29,7 @@ public abstract class BaseEntity {
 	
 	@Column
 	@CreatedDate
-	private Date createdDate;
+	private Timestamp createdDate;
 	
 	@Column
 	@LastModifiedBy
@@ -37,10 +37,14 @@ public abstract class BaseEntity {
 	
 	@Column
 	@LastModifiedDate
-	private Date modifiedDate;
-	
-	public Long getId() {
+	private Timestamp modifiedDate;
+
+	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getCreatedBy() {
@@ -51,11 +55,11 @@ public abstract class BaseEntity {
 		this.createdBy = createdBy;
 	}
 
-	public Date getCreatedDate() {
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -67,11 +71,12 @@ public abstract class BaseEntity {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Date getModifiedDate() {
+	public Timestamp getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(Date modifiedDate) {
+	public void setModifiedDate(Timestamp modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
+
 }

@@ -31,7 +31,10 @@ public class UserEntity extends BaseEntity {
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<RoleEntity> roles = new ArrayList<>();
-
+	
+	@ManyToMany(mappedBy = "userEntities")
+	private List<BuildingEntity> buildings = new ArrayList<BuildingEntity>();
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -71,4 +74,13 @@ public class UserEntity extends BaseEntity {
 	public void setRoles(List<RoleEntity> roles) {
 		this.roles = roles;
 	}
+
+	public List<BuildingEntity> getBuildings() {
+		return buildings;
+	}
+
+	public void setBuildings(List<BuildingEntity> buildings) {
+		this.buildings = buildings;
+	}
+
 }
