@@ -3,6 +3,8 @@ package com.laptrinhjavaweb.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.Spring;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,14 @@ public class UserServiceImpl implements UserService {
 	private UserConverter userConverter;
 	@Override
 	public List<UserDTO> findByBuilding(Integer buildingId) {
-		List<UserEntity> entities = userRepository.findByBuildings_Id(buildingId);
+//		Spring dataSpring Jpa
+//		List<UserEntity> entities = userRepository.findByBuildings_Id(buildingId);
+		
+//		HQL
+//		List<UserEntity> entities = userRepository.findByBuildingId(buildingId);
+		
+//		SQL Native
+		List<UserEntity> entities = userRepository.findByBuildingId(buildingId);
 		List<UserDTO> result = entities.stream().map(entity -> userConverter.entity2DTO(entity))
 				.collect(Collectors.toList());
 		return result;
